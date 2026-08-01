@@ -1,906 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nunorc</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <style>
-    html { scroll-padding-top: 80px;  }
-    .my-tags { margin-top: 10px; font-size: 14px; width: 72%; text-transform: uppercase;  }
-    .my-tag { margin: 2px 0; font-weight: 300; font-size: 0.8rem; background-color: #03a9f4 !important; padding: 0 6px; color: white; border-radius: 2px; line-height: 22px; height: 22px; display: inline-flex; }
-    .my-btn { width: 22%; }
-    .my-height { height: 112px; }
-    .my-title { background-color: rgba(0,0,0,0.12); width: 100%; }
-    .my-shadow { position: absolute; width: 120px; height: 120px; top: 0; left: -60px; border-radius: 50%; box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2); }
-    .my-course-title { font-size: 22px; font-weight: 300; }
-    .my-course-h { height: 114px; }
-    .my-icon { color: #ffab40; }
+  <title>Nuno Ramos Carvalho — Computer Science, Machine Learning, Spacecraft Operations</title>
+  <meta name="description" content="Personal page of Nuno Ramos Carvalho: portfolio, projects and courses across computer science, machine learning, data science, astrophysics and spacecraft operations." />
+  <meta name="author" content="Nuno Ramos Carvalho" />
+  <link rel="canonical" href="https://nunorc.github.io/" />
 
-    @media all and (max-width: 600px) {
-      html { scroll-padding-top: 10px;  }
-      .my-tags { width: 100%; }
-      .my-btn { width: 46%; }
-    }
-  </style>
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Nuno Ramos Carvalho" />
+  <meta property="og:title" content="Nuno Ramos Carvalho" />
+  <meta property="og:description" content="Portfolio, projects and courses across computer science, machine learning, data science, astrophysics and spacecraft operations." />
+  <meta property="og:url" content="https://nunorc.github.io/" />
+  <meta property="og:image" content="https://nunorc.github.io/imgs/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nuno Ramos Carvalho" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nuno Ramos Carvalho" />
+  <meta name="twitter:description" content="Portfolio, projects and courses across computer science, machine learning, data science, astrophysics and spacecraft operations." />
+  <meta name="twitter:image" content="https://nunorc.github.io/imgs/og-card.jpg" />
+
+  <meta name="theme-color" content="#37474f" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16191c" media="(prefers-color-scheme: dark)" />
+
+  <link rel="icon" href="imgs/favicon.png" sizes="any" />
+  <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <link rel="stylesheet" href="css/site.css" />
+
+  <!-- Applied before first paint so a stored theme choice never flashes. -->
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) { document.documentElement.dataset.theme = t; }
+    } catch (e) {}
+  </script>
 </head>
 
-<body class="grey lighten-5">
-  <div class="navbar-fixed" style="height: 30px; z-index: 1001">
-    <nav class="grey darken-3" role="navigation">
-      <div class="nav-wrapper container">
-        <a href="./index.html" class="brand-logo"><i class="material-icons">home</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#courses">Courses</a></li>
-        </ul>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#courses">Courses</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
+  <!-- Icon sprite. Inlined rather than referenced as an external file because
+       Chrome and Safari do not resolve cross-file <use> references. Brand marks
+       from Simple Icons (CC0); UI glyphs from Material Symbols (Apache 2.0). -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-medium" viewBox="0 0 24 24"><path d="M4.21 0A4.201 4.201 0 0 0 0 4.21v15.58A4.201 4.201 0 0 0 4.21 24h15.58A4.201 4.201 0 0 0 24 19.79v-1.093c-.137.013-.278.02-.422.02-2.577 0-4.027-2.146-4.09-4.832a7.592 7.592 0 0 1 .022-.708c.093-1.186.475-2.241 1.105-3.022a3.885 3.885 0 0 1 1.395-1.1c.468-.237 1.127-.367 1.664-.367h.023c.101 0 .202.004.303.01V4.211A4.201 4.201 0 0 0 19.79 0Zm.198 5.583h4.165l3.588 8.435 3.59-8.435h3.864v.146l-.019.004c-.705.16-1.063.397-1.063 1.254h-.003l.003 10.274c.06.676.424.885 1.063 1.03l.02.004v.145h-4.923v-.145l.019-.005c.639-.144.994-.353 1.054-1.03V7.267l-4.745 11.15h-.261L6.15 7.569v9.445c0 .857.358 1.094 1.063 1.253l.02.004v.147H4.405v-.147l.019-.004c.705-.16 1.065-.397 1.065-1.253V6.987c0-.857-.358-1.094-1.064-1.254l-.018-.004zm19.25 3.668c-1.086.023-1.733 1.323-1.813 3.124H24V9.298a1.378 1.378 0 0 0-.342-.047Zm-1.862 3.632c-.1 1.756.86 3.239 2.204 3.634v-3.634z"/></symbol>
+    <symbol id="i-scholar" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+    <symbol id="i-soundcloud" viewBox="0 0 24 24"><path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0Z"/></symbol>
+    <symbol id="i-verified" viewBox="0 0 24 24"><path d="m23 12-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 0 0 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="nav-brand" href="#about">Nuno Ramos Carvalho</a>
+
+      <button class="icon-btn theme-toggle" type="button" title="Switch colour theme">
+        <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun" /></svg>
+        <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon" /></svg>
+        <span class="sr-only">Switch colour theme</span>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu" /></svg>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#courses">Courses</a></li>
+      </ul>
     </nav>
-  </div>
+  </header>
 
-  <div id="about" class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div style="position: relative; left: 50%; top: 60px; z-index: 1000; width: 60px;">
-          <img class="circle" style="height: 120px; border: 1px solid #ccc; position: relative; left: -60px;" src="imgs/avatar.jpg" />
-          <div class="my-shadow"></div>
-        </div>
-        <div class="card white">
-          <div class="card-content">
-            <span class="card-title center" style="margin-top: 32px; font-weight: 300; font-size: 26px;">Nuno Ramos Carvalho</span>
-            <div class="divider" style="margin-bottom: 14px;"></div>
-            <p class="center light-blue-text my-tags" style="margin: auto;">
-              <span class="my-tag">computer science</span>
-              <span class="my-tag">machine learning</span>
-              <span class="my-tag">deep learning</span>
-              <span class="my-tag">data science</span>
-              <span class="my-tag">astronomy</span>
-              <span class="my-tag">astrophysics</span>
-              <span class="my-tag">aerospace engineering</span>
-              <span class="my-tag">spacecraft operations</span>
-            </p>
-            <div class="divider" style="margin-top: 14px;"></div>
-            <p class="center grey-text text-darken-3" style="margin-top: 14px;">
-              <a class="grey-text text-darken-2" href="https://www.linkedin.com/in/nuno-ramos-carvalho/" title="LinkedIn">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fab fa-linkedin fa-2x"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://github.com/nunorc" title="GitHub">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fab fa-github-square fa-2x"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://medium.com/@nunorc" title="Medium">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fab fa-medium fa-2x"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://scholar.google.com/citations?hl=en&user=vO3TvWQAAAAJ" title="Scholar">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fas fa-square fa-stack-2x"></i>
-                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://twitter.com/nunorcarvalho" title="Twitter">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fab fa-twitter-square fa-2x"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://www.instagram.com/nuno.rc/" title="Instagram">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fab fa-instagram-square fa-2x"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://www.youtube.com/channel/UC-0259IZU2YbY-hLEpdCygw" title="Youtube">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fab fa-youtube-square fa-2x"></i>
-                </span>
-              </a>
-              <a class="grey-text text-darken-2" href="https://soundcloud.com/nuno-carvalho-149185839" title="Soundcloud">
-                <span class="fa-stack" style="vertical-align: top;">
-                  <i class="fas fa-square fa-stack-2x"></i>
-                  <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
+  <main id="main">
 
-            </p>
-            <p class="center" style="margin-top: 14px; margin-bottom: 0;">
-              <a href="http://nrc.pt/resume.pdf" class="waves-effect waves-light btn btn-sm orange darken-1 my-btn">Resume</a>
-              <a href="mailto:narcarvalho@gmail.com" class="waves-effect waves-light btn btn-sm orange darken-1 my-btn">Contact</a>
-            </p>
+    <section id="about" class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <img class="hero-avatar" src="imgs/avatar.jpg" alt="Nuno Ramos Carvalho" width="400" height="400"
+            fetchpriority="high" />
+          <h1 class="hero-name">Nuno Ramos Carvalho</h1>
+
+          <hr class="rule" />
+
+          <ul class="tags">
+            <li class="tag">computer science</li>
+            <li class="tag">machine learning</li>
+            <li class="tag">deep learning</li>
+            <li class="tag">data science</li>
+            <li class="tag">astronomy</li>
+            <li class="tag">astrophysics</li>
+            <li class="tag">aerospace engineering</li>
+            <li class="tag">spacecraft operations</li>
+          </ul>
+
+          <hr class="rule" />
+
+          <div class="social">
+            <a href="https://www.linkedin.com/in/nuno-ramos-carvalho/" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-linkedin" /></svg>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            <a href="https://github.com/nunorc" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
+              <span class="sr-only">GitHub</span>
+            </a>
+            <a href="https://medium.com/@nunorc" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-medium" /></svg>
+              <span class="sr-only">Medium</span>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&amp;user=vO3TvWQAAAAJ" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-scholar" /></svg>
+              <span class="sr-only">Google Scholar</span>
+            </a>
+            <a href="https://x.com/nunorcarvalho" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-x" /></svg>
+              <span class="sr-only">X</span>
+            </a>
+            <a href="https://www.instagram.com/nuno.rc/" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-instagram" /></svg>
+              <span class="sr-only">Instagram</span>
+            </a>
+            <a href="https://www.youtube.com/channel/UC-0259IZU2YbY-hLEpdCygw" rel="me noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-youtube" /></svg>
+              <span class="sr-only">YouTube</span>
+            </a>
+          </div>
+
+          <div class="actions">
+            <a class="btn" href="http://nrc.pt/resume.pdf" rel="noopener">Resume</a>
+            <a class="btn" href="mailto:narcarvalho@gmail.com">Contact</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="white" style="border-top: 1px solid #e0e0e0;">
-    <div id="portfolio" class="container">
-      <h3 class="orange-text" style="margin-left: .75rem;">Portfolio</h3>
+    <section id="portfolio" class="panel">
+      <div class="container">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="grid section-body">
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/sim-ops.jpg">
-              <span class="card-title">Sim-Ops</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/sim-ops.jpg" width="450" height="300" loading="lazy"
+                alt="Screenshot of the Sim-Ops ground operations manager showing telemetry status panels and uplink and downlink spectrum plots" />
+              <h3>Sim-Ops</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Software suite for Spacecraft Operations simulations exercises and training.</p>
             </div>
-            <div class="card-action">
-              <a href="https://github.com/nunorc/sim-ops">GitHub</a>
-              <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/sim-ops" rel="noopener">GitHub</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/galaxy-convnet.jpg">
-              <span class="card-title">Galaxy ConvNet</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/galaxy-convnet.jpg" width="450" height="300" loading="lazy"
+                alt="Chart of Hubble galaxy morphology classes, from ellipticals through spirals and barred spirals, on a starfield" />
+              <h3>Galaxy ConvNet</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Galaxies morphology classification from images using convolutional neural networks.</p>
             </div>
-            <div class="card-action">
-              <a href="https://medium.com/@nunorc/galaxies-morphology-classification-using-convolutional-neural-networks-ed5d7d82fbf">Medium</a>
-              <a href="https://github.com/nunorc/galaxy-convnet">GitHub</a>
-              <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://medium.com/@nunorc/galaxies-morphology-classification-using-convolutional-neural-networks-ed5d7d82fbf" rel="noopener">Medium</a>
+              <a href="https://github.com/nunorc/galaxy-convnet" rel="noopener">GitHub</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/astromlp.jpg" />
-              <span class="card-title">astroMLP</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/astromlp.jpg" width="450" height="300" loading="lazy"
+                alt="Industrial pipework, valves and actuators mounted on a brick wall" />
+              <h3>astroMLP</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Collection of data processing pipelines using deep learning models for astrophysics applications.</p>
             </div>
-            <div class="card-action">
-              <a href="https://nunorc.github.io/astromlp-app/">App</a>
-              <a href="https://github.com/nunorc/astromlp">GitHub</a>
-              <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://nunorc.github.io/astromlp-app/" rel="noopener">App</a>
+              <a href="https://github.com/nunorc/astromlp" rel="noopener">GitHub</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/pulsars.png" />
-              <span class="card-title">Predicting Pulsars</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/pulsars.png" width="450" height="300" loading="lazy"
+                alt="Illustration of a pulsar: a neutron star with looping magnetic field lines and a beam along its magnetic axis" />
+              <h3>Predicting Pulsars</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Predicting pulsars candidates using Neural Networks.</p>
             </div>
-            <div class="card-action">
-              <a href="https://medium.com/@nunorc/predicting-pulsar-stars-using-neural-networks-ecb3a527336b">Medium</a>
-              <a href="https://www.kaggle.com/nunorc/predicting-pulsar-stars-using-a-neural-network">Kernel</a>
-              <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://medium.com/@nunorc/predicting-pulsar-stars-using-neural-networks-ecb3a527336b" rel="noopener">Medium</a>
+              <a href="https://www.kaggle.com/nunorc/predicting-pulsar-stars-using-a-neural-network" rel="noopener">Kernel</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/sunspots.jpg" />
-              <span class="card-title">Sunspots Estimator</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/sunspots.jpg" width="450" height="300" loading="lazy"
+                alt="The Sun in red-filtered light with bright active regions and a prominence arcing from the limb" />
+              <h3>Sunspots Estimator</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Predicting monthly average of active sunspots in the Sun.</p>
             </div>
-            <div class="card-action">
-             <a href="https://github.com/nunorc/sunspots-estimator">GitHub</a>
-             <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/sunspots-estimator" rel="noopener">GitHub</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/exopl.jpg" />
-              <span class="card-title">exopl</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/exopl.jpg" width="450" height="300" loading="lazy"
+                alt="Model planets with rings suspended against a dark background" />
+              <h3>exopl</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>A command line tool to perform pipelined operations on exoplanets data.</p>
             </div>
-            <div class="card-action">
-              <a href="https://github.com/nunorc/exopl">GitHub</a>
-              <span class="badge right blue-grey-text">C++</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/exopl" rel="noopener">GitHub</a>
+              <span class="meta">C++</span>
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/k210.jpg" />
-              <span class="card-title">Kepler 210 Sim</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/k210.jpg" width="450" height="300" loading="lazy"
+                alt="Simulation of a star with two planets on elliptical orbits over a starfield" />
+              <h3>Kepler 210 Sim</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Kepler 210 multi-planetary system of exoplanets simulation with real data.</p>
             </div>
-            <div class="card-action">
-              <a href="https://nunorc.github.io/kepler-210-sim/">View</a>
-              <a href="https://github.com/nunorc/kepler-210-sim">GitHub</a>
-              <span class="badge right blue-grey-text">WebGL</span>
+            <div class="card-foot">
+              <a href="https://nunorc.github.io/kepler-210-sim/" rel="noopener">View</a>
+              <a href="https://github.com/nunorc/kepler-210-sim" rel="noopener">GitHub</a>
+              <span class="meta">WebGL</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/exotx.jpg" />
-              <span class="card-title">exotx</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/exotx.jpg" width="450" height="300" loading="lazy"
+                alt="Sequence of eclipse phases across a dusk sky, from crescent through ring back to crescent" />
+              <h3>exotx</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Package for exploring exoplanets transits and related resources.</p>
             </div>
-            <div class="card-action">
-             <a href="https://github.com/nunorc/exotx">GitHub</a>
-             <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/exotx" rel="noopener">GitHub</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/mars-rover.jpg" />
-              <span class="card-title">Mars Rover Slideshow</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/mars-rover.jpg" width="450" height="300" loading="lazy"
+                alt="Rendering of a solar-powered rover on the rocky red surface of Mars" />
+              <h3>Mars Rover Slideshow</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Web app with slideshows of images taken by rovers on Mars.</p>
             </div>
-            <div class="card-action">
-              <a href="http://mars-rover-slideshow.nrc.pt/">App</a>
-              <a href="https://github.com/nunorc/MarsRoverSlideshow">GitHub</a>
-              <span class="badge right blue-grey-text">Java</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/MarsRoverSlideshow" rel="noopener">GitHub</a>
+              <span class="meta">Java</span>
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/eo-quick-videos.jpg" />
-              <span class="card-title">EO Quick Videos</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/eo-quick-videos.jpg" width="450" height="301" loading="lazy"
+                alt="Satellite vegetation index map of a region rendered in autumn greens and yellows, labelled Fall" />
+              <h3>EO Quick Videos</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Quick videos illustrating Earth observation insights using real satellite data.</p>
             </div>
-            <div class="card-action" style="font-size: small;">
-             <a href="https://www.youtube.com/playlist?list=PLssYKTdA-K148Eyo71myD2pyb8pSvkEou">Youtube</a>
-             <a href="https://github.com/nunorc/eo-quick-videos">GitHub</a>
-             <span class="badge right blue-grey-text">Google EE</span>
+            <div class="card-foot">
+              <a href="https://www.youtube.com/playlist?list=PLssYKTdA-K148Eyo71myD2pyb8pSvkEou" rel="noopener">YouTube</a>
+              <a href="https://github.com/nunorc/eo-quick-videos" rel="noopener">GitHub</a>
+              <span class="meta">Google EE</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/y-space.jpg" />
-              <span class="card-title">Y-Space</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/y-space.jpg" width="450" height="300" loading="lazy"
+                alt="A heavy-lift rocket lifting off from a coastal launch pad in a cloud of exhaust" />
+              <h3>Y-Space</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Datasets, web-services, models, tools, and other assorted resources about the Universe.</p>
             </div>
-            <div class="card-action">
-              <a href="http://y-space.pw/">Site</a>
-              <a href="https://github.com/y-space">GitHub</a>
-              <span class="badge right blue-grey-text"></span>
+            <div class="card-foot">
+              <a href="https://github.com/y-space" rel="noopener">GitHub</a>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/sdssgs.jpg" />
-              <span class="card-title">SDSS Galaxy Subset</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/sdssgs.jpg" width="450" height="300" loading="lazy"
+                alt="The Andromeda galaxy, a bright spiral seen at an angle among field stars" />
+              <h3>SDSS Galaxy Subset</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Dataset of around 60k objects classified as galaxies, including RGB images, FITS and spectral data.</p>
             </div>
-            <div class="card-action">
-             <a href="https://zenodo.org/record/6501642">Site</a>
-             <span class="badge right blue-grey-text">Dataset</span>
+            <div class="card-foot">
+              <a href="https://zenodo.org/record/6501642" rel="noopener">Site</a>
+              <span class="meta">Dataset</span>
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/yspacepy.jpg" />
-              <span class="card-title">yspacepy</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/yspacepy.jpg" width="450" height="300" loading="lazy"
+                alt="A spacecraft with solar panels photographed from orbit above a desert coastline" />
+              <h3>yspacepy</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Python package with utilities and interface to the Y-Space API.</p>
             </div>
-            <div class="card-action">
-              <a href="https://pypi.org/project/yspacepy/">PyPi</a>
-              <a href="https://github.com/y-space/yspacepy">GitHub</a>
-              <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://pypi.org/project/yspacepy/" rel="noopener">PyPI</a>
+              <a href="https://github.com/y-space/yspacepy" rel="noopener">GitHub</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/qaptnet.jpg" />
-              <span class="card-title">qaptnet</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/qaptnet.jpg" width="450" height="300" loading="lazy"
+                alt="A teacher at a blackboard in a primary school classroom, with a pupil raising a hand" />
+              <h3>qaptnet</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Question answering model fine tuned for Portuguese.</p>
             </div>
-            <div class="card-action">
-              <a href="https://github.com/nunorc/qaptnet">GitHub</a>
-              <a href="https://medium.com/@nunorc/question-answering-model-fine-tuned-for-portuguese-801bb05b6119">Medium</a>
-              <span class="badge right blue-grey-text">Python</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/qaptnet" rel="noopener">GitHub</a>
+              <a href="https://medium.com/@nunorc/question-answering-model-fine-tuned-for-portuguese-801bb05b6119" rel="noopener">Medium</a>
+              <span class="meta">Python</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/squad-pt.jpg" />
-              <span class="card-title">squad-v1.1-pt</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/squad-pt.jpg" width="450" height="300" loading="lazy"
+                alt="A wall covered with open books" />
+              <h3>squad-v1.1-pt</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Portuguese translation of the SQuAD dataset.</p>
             </div>
-            <div class="card-action">
-             <a href="https://github.com/nunorc/squad-v1.1-pt">GitHub</a>
-             <span class="badge right blue-grey-text">Dataset</span>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/squad-v1.1-pt" rel="noopener">GitHub</a>
+              <span class="meta">Dataset</span>
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/cosmo.jpg" />
-              <span class="card-title">Cosmo Sims</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/cosmo.jpg" width="450" height="300" loading="lazy"
+                alt="Simulation render of the cosmic web: filaments of clustered points in orange and purple" />
+              <h3>Cosmo Sims</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Simple cosmological simulations.</p>
             </div>
-            <div class="card-action" style="font-size: small;">
-              <a href="https://www.youtube.com/playlist?list=PLssYKTdA-K16-M20Cc_xIZM2t_wKiWcUC">Youtube</a>
-              <a href="https://github.com/nunorc/cosmo-sims">GitHub</a>
-              <span class="badge right blue-grey-text">Gadget-2</span>
+            <div class="card-foot">
+              <a href="https://www.youtube.com/playlist?list=PLssYKTdA-K16-M20Cc_xIZM2t_wKiWcUC" rel="noopener">YouTube</a>
+              <a href="https://github.com/nunorc/cosmo-sims" rel="noopener">GitHub</a>
+              <span class="meta">Gadget-2</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/reducer.jpg" />
-              <span class="card-title">Reducer</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/reducer.jpg" width="450" height="300" loading="lazy"
+                alt="State diagram with labelled nodes joined by numbered transitions" />
+              <h3>Reducer</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Tool for reducing expressions to a simpler form in Haskell.</p>
             </div>
-            <div class="card-action">
-              <a href="http://reducer.nrc.pt/">Site</a>
-             <a href="https://github.com/nunorc/Reducer">GitHub</a>
-             <span class="badge right blue-grey-text">Haskell</span>
+            <div class="card-foot">
+              <a href="http://reducer.nrc.pt/" rel="noopener">Site</a>
+              <a href="https://github.com/nunorc/Reducer" rel="noopener">GitHub</a>
+              <span class="meta">Haskell</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/p5stack.jpg" />
-              <span class="card-title">App::p5stack</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/p5stack.jpg" width="450" height="300" loading="lazy"
+                alt="Coloured plastic cups stacked into a pyramid" />
+              <h3>App::p5stack</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Manage your dependencies and Perl requirements locally.</p>
             </div>
-            <div class="card-action">
-              <a href="https://metacpan.org/release/App-p5stack">CPAN</a>
-              <a href="https://github.com/nunorc/App-p5stack">GitHub</a>
-              <span class="badge right blue-grey-text">Perl</span>
+            <div class="card-foot">
+              <a href="https://metacpan.org/release/App-p5stack" rel="noopener">CPAN</a>
+              <a href="https://github.com/nunorc/App-p5stack" rel="noopener">GitHub</a>
+              <span class="meta">Perl</span>
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row" style="padding-bottom: 20px; margin-bottom: 0;">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/pln.pt.jpg" />
-              <span class="card-title">pln.pt</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/pln.pt.jpg" width="450" height="300" loading="lazy"
+                alt="Close-up of an aged printed page of Portuguese verse with a decorated initial" />
+              <h3>pln.pt</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Natural Language Processing for Portuguese resources, services and other information.</p>
             </div>
-            <div class="card-action">
-              <a href="http://pln.pt">Site</a>
-              <a href="https://github.com/PLN-pt">GitHub</a>
+            <div class="card-foot">
+              <a href="https://github.com/PLN-pt" rel="noopener">GitHub</a>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/idsplitter.jpg" />
-              <span class="card-title">Lingua::IdSplitter</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/idsplitter.jpg" width="450" height="300" loading="lazy"
+                alt="Scattered wooden letter tiles from a word game" />
+              <h3>Lingua::IdSplitter</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Split compound identifiers into individual terms.</p>
             </div>
-            <div class="card-action">
-              <a href="https://metacpan.org/release/Lingua-IdSplitter">CPAN</a>
-              <a href="https://github.com/nunorc/Lingua-IdSplitter">GitHub</a>
-              <span class="badge right blue-grey-text">Perl</span>
+            <div class="card-foot">
+              <a href="https://metacpan.org/release/Lingua-IdSplitter" rel="noopener">CPAN</a>
+              <a href="https://github.com/nunorc/Lingua-IdSplitter" rel="noopener">GitHub</a>
+              <span class="meta">Perl</span>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/101.jpg" />
-              <span class="card-title">The 101 Series</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/101.jpg" width="450" height="300" loading="lazy"
+                alt="A stack of books with an apple, coloured pencils and alphabet blocks on a desk" />
+              <h3>The 101 Series</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Series of practical and quick introduction to different topics.</p>
             </div>
-            <div class="card-action">
-             <a href="https://github.com/nunorc/the-101-series">GitHub</a>
+            <div class="card-foot">
+              <a href="https://github.com/nunorc/the-101-series" rel="noopener">GitHub</a>
             </div>
-          </div>
+          </article>
+
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
+    <section id="projects" class="panel">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid section-body">
 
-  <div class="white" style="border-top: 1px solid #e0e0e0;">
-    <div id="projects" class="container">
-      <h3 class="orange-text" style="margin-left: .75rem;">Projects</h3>
-
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/wiki-score.jpg" />
-              <span class="card-title">Wiki Score</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/wiki-score.jpg" width="450" height="300" loading="lazy"
+                alt="An open book of printed piano sheet music" />
+              <h3>Wiki Score</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Online platform for cooperative editing of large scale music scores.</p>
             </div>
-            <div class="card-action">
-              <a href="http://wiki-score.org/">Site</a>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/cross.jpg" width="450" height="300" loading="lazy"
+                alt="Close-up of interlocking metal gears" />
+              <h3>CROSS</h3>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/cross.jpg" />
-              <span class="card-title">CROSS</span>
-            </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>An Infrastructure for Certification and Re-engineering of Open Source Software.</p>
             </div>
-            <div class="card-action">
-              <a href="http://wiki.di.uminho.pt/twiki/bin/view/Research/CROSS/WebHome">SITE</a>
+            <div class="card-foot">
+              <a href="https://wiki.di.uminho.pt/twiki/bin/view/Research/CROSS/WebHome" rel="noopener">Site</a>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/natura.jpg" />
-              <span class="card-title">Projecto Natura</span>
-            </div>
-            <div class="card-content white-text my-height">
-              <p>PLN research and application development at University of Minho.</p>
-            </div>
-            <div class="card-action">
-              <a href="https://natura.di.uminho.pt/">SITE</a>
-            </div>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <div class="row" style="padding-bottom: 20px; margin-bottom: 0;">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/per-fide.jpg" />
-              <span class="card-title">Per-Fide</span>
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/natura.jpg" width="450" height="300" loading="lazy"
+                alt="Aerial view of a small lake surrounded by dense green forest" />
+              <h3>Projecto Natura</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
+              <p>NLP research and application development at University of Minho.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/per-fide.jpg" width="450" height="300" loading="lazy"
+                alt="Rows of national flags laid flat on the ground, casting long shadows" />
+              <h3>Per-Fide</h3>
+            </div>
+            <div class="card-body">
               <p>Portuguese in parallel with six languages: Español, русский, Français, Italiano, Deutsch, English.</p>
             </div>
-            <div class="card-action">
-              <a href="http://per-fide.ilch.uminho.pt/">Site</a>
+            <div class="card-foot">
+              <a href="http://per-fide.ilch.uminho.pt/" rel="noopener">Site</a>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/appp.jpg" />
-              <span class="card-title">APPP</span>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/appp.jpg" width="450" height="300" loading="lazy"
+                alt="A weathered Portuguese flag flying from a boat at sea with gulls overhead" />
+              <h3>APPP</h3>
             </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Portuguese Association for Perl Programmers, promoting and advocating the Perl programming language.</p>
             </div>
-            <div class="card-action">
-              <a href="http://perl.pt/">SITE</a>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="imgs/debian.jpg" width="450" height="300" loading="lazy"
+                alt="Silhouettes of a group of people standing against a sunset" />
+              <h3>Debian Perl Group</h3>
             </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-image">
-              <img src="imgs/debian.jpg" />
-              <span class="card-title">Debian Perl Group</span>
-            </div>
-            <div class="card-content white-text my-height">
+            <div class="card-body">
               <p>Packaging of CPAN Perl distributions for Debian.</p>
             </div>
-            <div class="card-action">
-              <a href="https://wiki.debian.org/Teams/DebianPerlGroup">SITE</a>
+            <div class="card-foot">
+              <a href="https://wiki.debian.org/Teams/DebianPerlGroup" rel="noopener">Site</a>
             </div>
-          </div>
+          </article>
+
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-
-  <div class="white" style="border-top: 1px solid #e0e0e0;">
-    <div id="courses" class="container">
-      <h3 class="orange-text" style="margin-left: .75rem;">Courses</h3>
-
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Machine Learning Engineering for Production (MLOps) Spec.</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/PKGAUBPPZREZ"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">DeepLearning.AI</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">DeepLearning.AI TensorFlow Developer</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/BGQMWLMJRT9B"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">DeepLearning.AI</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">IBM Data Science Professional Certificate Specialization</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/TNQTTVM842A7"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">IBM</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Front-End Web Developer Nanodegree</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/TNQTTVM842A7"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">Udacity</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Data Analysis and Interpretation Specialization</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/M89E9B3HCDXD"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">Wesleyan University</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Machine Learning Specialization</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/XPEQRWK3S8K5"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">University of Washington</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Deep Learning Specialization</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/9ARGLANALS9R"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">DeepLearning.AI</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Machine Learning</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/records/3NJCABDZRA7J"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">Stanford University</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">MBSE: Model-Based Systems Engineering</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://coursera.org/share/579aba81978784138442962e9a8e6c7e"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">University at Buffalo</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Kinetics: Studying Spacecraft Motion</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/verify/6HQ57WZYTANQ"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text" style="font-size: small;">Univ. of Colorado Boulder</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Kinematics: Describing the Motions of Spacecraft</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/verify/KHUTMBWKWJKK"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text" style="font-size: small;">Univ. of Colorado Boulder</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title" style="font-size: 18px;">Planets, exoplanets and their systems in a broad and multidisciplinary context</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <i class="material-icons my-icon">verified</i>
-              <span class="badge right blue-grey-text" style="font-size: small;">Instituto Astrofísica Andalucía</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Space Mission Design and Operations</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://courses.edx.org/certificates/c214852a69514fd5891ea5e02c8c5f17"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">EPFL</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Basic Principles of Radar Backscatter</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <i class="material-icons my-icon">verified</i>
-              <span class="badge right blue-grey-text" style="font-size: small;">EO Colleege</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title" style="font-size: 18px;">Echoes in Space: Introduction to Radar Remote Sensing</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <i class="material-icons my-icon">verified</i>
-              <span class="badge right blue-grey-text" style="font-size: small;">EO Colleege</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Artificial Intelligence (AI) for Earth Monitoring</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.futurelearn.com/certificates/3h2urt2"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">EUMETSAT</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">C++ in Aerospace Simulations</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.udemy.com/certificate/UC-3a29a4e7-f149-4d7a-9ac2-57336d36e934/"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">Udemy</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Astronomy: Exploring Time and Space</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/records/Z9VGKKZRWZEW"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">University of Arizona</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Data-driven Astronomy</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.coursera.org/account/accomplishments/records/DL5P876KGHH4"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">University of Sydney</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">ECSS Training - Introduction and Various Standards</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <i class="material-icons my-icon">verified</i>
-              <span class="badge right blue-grey-text">ESA Learning Hub</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Music Theory Grade 1</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <i class="material-icons my-icon">verified</i>
-              <span class="badge right blue-grey-text">ABRSM</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Music Composition 1</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.udemy.com/certificate/UC-a5dffb53-0482-4b90-bb9c-f917cdabc8ac/"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">Udemy</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Music Composition 2</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.udemy.com/certificate/UC-4f243f92-1b9d-4acc-966f-822f74e823e1/"><i class="material-icons">verified</i></a>
-              <span class="badge right blue-grey-text">Udemy</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Orchestration</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.udemy.com/certificate/UC-1eb84333-831a-4b51-9c5e-a3b1620a3921/"><i class="material-icons my-icon">verified</i></a>
-              <span class="badge right blue-grey-text">Udemy</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Spacecraft Design, Development, and Operations</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://aiaa.mycrowdwisdom.com/diweb/catalog/cert/view/1/id/b17dff2e-f311-4b83-a159-f8ac75765eb8"><i class="material-icons my-icon">verified</i></a>
-              <span class="badge right blue-grey-text">AIAA</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Associate AI Engineer for Developers</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/8641f3590549f196b435a7375dc68d954237f094"><i class="material-icons my-icon">verified</i></a>
-              <span class="badge right blue-grey-text">Datacamp</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card blue-grey darken-2">
-            <div class="card-content white-text my-course-h">
-              <span class="my-course-title">Introduction to Satellite Communications</span>
-            </div>
-            <div class="card-action" style="padding: 8px 24px;">
-              <a href=""><i class="material-icons my-icon">verified</i></a>
-              <span class="badge right blue-grey-text">JHU</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="page-footer orange">
-    <div class="footer-copyright">
+    <section id="courses" class="panel">
       <div class="container">
-      <div class="row">
-        <div class="col m6">&copy;2020-2025 All rights reserved.</div>
-        <div class="col m6 right-align">Last updated: <span id="modified" class="orange-text text-lighten-3">--</span>
-          <span style="padding: 0 6px;">&#183;</span> Powered by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-          and <a class="orange-text text-lighten-3" href="https://unsplash.com/">Unsplash</a></div>
+        <h2 class="section-title">Courses</h2>
+        <div class="grid grid-compact section-body">
+
+          <article class="card">
+            <h3 class="card-title">Machine Learning Engineering for Production (MLOps) Spec.</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/specialization/certificate/PKGAUBPPZREZ" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Machine Learning Engineering for Production</span>
+              </a>
+              <span class="meta">DeepLearning.AI</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">DeepLearning.AI TensorFlow Developer</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/specialization/BGQMWLMJRT9B" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: DeepLearning.AI TensorFlow Developer</span>
+              </a>
+              <span class="meta">DeepLearning.AI</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">IBM Data Science Professional Certificate Specialization</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/specialization/TNQTTVM842A7" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: IBM Data Science Professional Certificate</span>
+              </a>
+              <span class="meta">IBM</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Front-End Web Developer Nanodegree</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">Udacity</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Data Analysis and Interpretation Specialization</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/specialization/M89E9B3HCDXD" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Data Analysis and Interpretation</span>
+              </a>
+              <span class="meta">Wesleyan University</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Machine Learning Specialization</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/specialization/XPEQRWK3S8K5" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Machine Learning Specialization</span>
+              </a>
+              <span class="meta">University of Washington</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Deep Learning Specialization</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/specialization/certificate/9ARGLANALS9R" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Deep Learning Specialization</span>
+              </a>
+              <span class="meta">DeepLearning.AI</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Machine Learning</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/records/3NJCABDZRA7J" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Machine Learning</span>
+              </a>
+              <span class="meta">Stanford University</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">MBSE: Model-Based Systems Engineering</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://coursera.org/share/579aba81978784138442962e9a8e6c7e" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Model-Based Systems Engineering</span>
+              </a>
+              <span class="meta">University at Buffalo</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Kinetics: Studying Spacecraft Motion</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/verify/6HQ57WZYTANQ" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Kinetics, Studying Spacecraft Motion</span>
+              </a>
+              <span class="meta">Univ. of Colorado Boulder</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Kinematics: Describing the Motions of Spacecraft</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/verify/KHUTMBWKWJKK" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Kinematics, Describing the Motions of Spacecraft</span>
+              </a>
+              <span class="meta">Univ. of Colorado Boulder</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Planets, exoplanets and their systems in a broad and multidisciplinary context</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">Instituto de Astrofísica de Andalucía</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Space Mission Design and Operations</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://courses.edx.org/certificates/c214852a69514fd5891ea5e02c8c5f17" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Space Mission Design and Operations</span>
+              </a>
+              <span class="meta">EPFL</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Basic Principles of Radar Backscatter</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">EO College</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Echoes in Space: Introduction to Radar Remote Sensing</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">EO College</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Artificial Intelligence (AI) for Earth Monitoring</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.futurelearn.com/certificates/3h2urt2" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Artificial Intelligence for Earth Monitoring</span>
+              </a>
+              <span class="meta">EUMETSAT</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">C++ in Aerospace Simulations</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.udemy.com/certificate/UC-3a29a4e7-f149-4d7a-9ac2-57336d36e934/" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: C++ in Aerospace Simulations</span>
+              </a>
+              <span class="meta">Udemy</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Astronomy: Exploring Time and Space</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/records/Z9VGKKZRWZEW" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Astronomy, Exploring Time and Space</span>
+              </a>
+              <span class="meta">University of Arizona</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Data-driven Astronomy</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.coursera.org/account/accomplishments/records/DL5P876KGHH4" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Data-driven Astronomy</span>
+              </a>
+              <span class="meta">University of Sydney</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">ECSS Training — Introduction and Various Standards</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">ESA Learning Hub</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Spacecraft Design, Development, and Operations</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://aiaa.mycrowdwisdom.com/diweb/catalog/cert/view/1/id/b17dff2e-f311-4b83-a159-f8ac75765eb8" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Spacecraft Design, Development, and Operations</span>
+              </a>
+              <span class="meta">AIAA</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Associate AI Engineer for Developers</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.datacamp.com/completed/statement-of-accomplishment/track/8641f3590549f196b435a7375dc68d954237f094" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Associate AI Engineer for Developers</span>
+              </a>
+              <span class="meta">DataCamp</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Introduction to Satellite Communications</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">Johns Hopkins University</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Music Theory Grade 1</h3>
+            <div class="card-foot">
+              <span class="cert cert-none">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Completed; no certificate link</span>
+              </span>
+              <span class="meta">ABRSM</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Music Composition 1</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.udemy.com/certificate/UC-a5dffb53-0482-4b90-bb9c-f917cdabc8ac/" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Music Composition 1</span>
+              </a>
+              <span class="meta">Udemy</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Music Composition 2</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.udemy.com/certificate/UC-4f243f92-1b9d-4acc-966f-822f74e823e1/" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Music Composition 2</span>
+              </a>
+              <span class="meta">Udemy</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Orchestration</h3>
+            <div class="card-foot">
+              <a class="cert" href="https://www.udemy.com/certificate/UC-1eb84333-831a-4b51-9c5e-a3b1620a3921/" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-verified" /></svg>
+                <span class="sr-only">Certificate: Orchestration</span>
+              </a>
+              <span class="meta">Udemy</span>
+            </div>
+          </article>
+
+        </div>
       </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy;2020&ndash;<span id="year">2026</span> All rights reserved.</div>
+      <div>
+        Last updated: <time datetime="2026-08-01">2026-08-01</time>
+        <span aria-hidden="true"> &middot; </span>
+        Photography from <a href="https://unsplash.com/" rel="noopener">Unsplash</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/materialize.min.js"></script>
-  <script src="js/init.js"></script>
-
-  </body>
+  <script src="js/site.js"></script>
+</body>
 </html>

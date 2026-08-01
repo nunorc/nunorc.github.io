@@ -1,0 +1,654 @@
+/* nunorc.github.io — site styles */
+
+/* ---------- tokens ---------- */
+
+/* One palette, not two. Every colour is declared once with a plain fallback
+   followed by light-dark(); browsers without light-dark() keep the light
+   value, everything else resolves against the root color-scheme below.
+   Ratios in comments are against the surface the value is used on. */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: #f4f5f6;
+  --bg: light-dark(#f4f5f6, #121416);
+  --surface: #ffffff;
+  --surface: light-dark(#ffffff, #1a1d20);
+  --border: #e4e7e9;
+  --border: light-dark(#e4e7e9, #2b2f33);
+  --text: #1f2225;                                    /* 14.6:1 */
+  --text: light-dark(#1f2225, #e6e8ea);
+  --text-dim: #5b636a;                                /* 6.1:1 */
+  --text-dim: light-dark(#5b636a, #9aa2a9);
+
+  /* --accent is a fill, --accent-text is the accent used as text on a
+     surface: an orange bright enough to read as orange as a fill does not
+     reach 4.5:1 against white as text. */
+  --accent: #ffa726;                                  /* dark text on top -> 8.2:1 */
+  --accent-text: #c2410c;                             /* 5.2:1 */
+  --accent-text: light-dark(#c2410c, #ffa726);
+  --accent-soft: rgba(194, 65, 12, 0.12);
+  --accent-soft: light-dark(rgba(194, 65, 12, 0.12), rgba(255, 167, 38, 0.14));
+  --on-accent: #1f2225;
+  --on-accent: light-dark(#1f2225, #1a1d20);
+
+  --nav-bg: #37474f;
+  --nav-bg: light-dark(#37474f, #16191c);
+  --nav-text: #eceff1;                                /* 8.4:1 */
+  --nav-text: light-dark(#eceff1, #e6e8ea);
+
+  --card: #37474f;
+  --card: light-dark(#37474f, #263238);
+  --card-2: #313f47;
+  --card-2: light-dark(#313f47, #222c31);
+  --card-text: #ffffff;                               /* 7.2:1 */
+  --card-dim: #d9dee0;                                /* 7.1:1 */
+  --card-link: #ffa726;                               /* 5.0:1 */
+  --card-meta: #cfd8dc;                               /* 6.7:1 */
+  --card-meta: light-dark(#cfd8dc, #b0bec5);
+  --card-border: rgba(255, 255, 255, 0.12);
+
+  --tag: #0277bd;                                     /* white on top -> 4.8:1 */
+  --tag-text: #ffffff;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-tag: 4px;
+
+  --e1: 0 1px 2px light-dark(rgba(16, 24, 32, 0.08), rgba(0, 0, 0, 0.5));
+  --e2: 0 2px 4px -2px light-dark(rgba(16, 24, 32, 0.10), rgba(0, 0, 0, 0.45)),
+    0 6px 12px -4px light-dark(rgba(16, 24, 32, 0.10), rgba(0, 0, 0, 0.45));
+  --e3: 0 4px 8px -4px light-dark(rgba(16, 24, 32, 0.12), rgba(0, 0, 0, 0.5)),
+    0 14px 28px -10px light-dark(rgba(16, 24, 32, 0.20), rgba(0, 0, 0, 0.55));
+
+  --nav-h: 60px;
+  --content-max: 1120px;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* The toggle writes data-theme; forcing color-scheme re-resolves every
+   light-dark() above, so no palette is repeated. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ---------- base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -110%);
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  flex: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ---------- header / nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  box-shadow: var(--e2);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--nav-h);
+}
+
+.nav a {
+  color: var(--nav-text);
+}
+
+.nav-brand {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-right: auto;
+  padding: 0.4rem 0;
+}
+
+.nav-brand:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Links first, then the theme button, regardless of DOM order — on small
+   screens the buttons stay on the bar and the list drops below it. */
+.nav-list {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-toggle {
+  order: 3;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.nav-list a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  opacity: 1;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* The toggle shows the theme it would switch you to: moon while light,
+   sun while dark. The explicit [data-theme] rules come last so a stored
+   choice beats the system preference in both directions. */
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+.theme-toggle .icon-moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun {
+    display: block;
+  }
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+:root[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: inline-flex;
+    order: 3;
+  }
+
+  .theme-toggle {
+    order: 2;
+  }
+
+  .nav-list {
+    order: 4;
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-list.is-open {
+    display: flex;
+  }
+
+  .nav-list a {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- sections ---------- */
+
+.panel {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+/* --accent, not --accent-text, to match the buttons. On white that is
+   1.9:1, below the 3:1 WCAG AA floor for large text. */
+.section-title {
+  color: var(--accent);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  font-weight: 400;
+  padding-top: 2.75rem;
+  padding-bottom: 1.5rem;
+  scroll-margin-top: var(--nav-h);
+}
+
+.section-body {
+  padding-bottom: 3rem;
+}
+
+#about {
+  scroll-margin-top: var(--nav-h);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  /* > 62px, the avatar's negative margin, so it clears the sticky header */
+  padding: 5rem 0 2.5rem;
+}
+
+.hero-card {
+  /* 640 packs the eight tags as an even 4 + 4; narrower leaves a ragged
+     4 + 3 + 1 that is taller despite the smaller card. */
+  max-width: 640px;
+  margin-inline: auto;
+  padding: 0 1.5rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--e3);
+  text-align: center;
+}
+
+.hero-avatar {
+  width: 124px;
+  height: 124px;
+  margin: -62px auto 0.7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--surface);
+  box-shadow: var(--e2);
+}
+
+.hero-name {
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hero-role {
+  margin: 0.35rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.rule {
+  height: 1px;
+  margin: 0.85rem 0;
+  background: var(--border);
+  border: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-tag);
+  background: var(--tag);
+  color: var(--tag-text);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--text-dim);
+  font-size: 18px;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.social a:hover {
+  color: var(--accent-text);
+  background: var(--accent-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  flex: 1 1 140px;
+  max-width: 180px;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: var(--e1);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.btn:hover {
+  text-decoration: none;
+  box-shadow: var(--e2);
+  transform: translateY(-1px);
+}
+
+/* ---------- card grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-compact {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--card);
+  color: var(--card-text);
+  border-radius: var(--radius);
+  box-shadow: var(--e2);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.card:hover {
+  box-shadow: var(--e3);
+  transform: translateY(-2px);
+}
+
+.card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--card-2);
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scrim keeps the overlaid title readable on light photographs. */
+.card-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  pointer-events: none;
+}
+
+.card-media h3 {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 0.9rem;
+  z-index: 1;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.card-body {
+  flex: 1;
+  padding: 1.1rem 1.25rem;
+}
+
+.card-body p {
+  margin: 0;
+  color: var(--card-dim);
+  font-size: 0.95rem;
+}
+
+.card-title {
+  flex: 1;
+  padding: 1.35rem 1.25rem 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--card-border);
+  min-height: 52px;
+}
+
+.card-foot a {
+  color: var(--card-link);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card-foot .meta {
+  margin-left: auto;
+  color: var(--card-meta);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.cert {
+  display: inline-flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+/* An unlinked credential: shown, but not clickable. */
+.cert-none {
+  color: var(--card-meta);
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  padding: 1.5rem 0;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.85rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- print ---------- */
+
+@media print {
+  .site-header,
+  .skip-link,
+  .actions,
+  .social {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #999;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

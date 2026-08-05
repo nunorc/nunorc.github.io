@@ -568,12 +568,19 @@ h3 {
   min-height: 52px;
 }
 
-.card-foot a {
+.card-foot a,
+.card-foot .link-none {
   color: var(--card-link);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+/* A label where the link used to be: the site is gone, so it reads as a
+   dead entry rather than something to click. */
+.card-foot .link-none {
+  color: var(--card-meta);
 }
 
 .card-foot .meta {
@@ -585,15 +592,15 @@ h3 {
   text-align: right;
 }
 
-.cert {
+/* The credential mark. Selector matches `.card-foot a` so the size wins over
+   it; unlinked credentials (.cert-none) look identical, just not clickable.
+   --accent, not --accent-text, to match the buttons — the glyph is decorative
+   (the link text lives in an .sr-only label), so the 1.9:1 on white is fine. */
+.card-foot .cert {
   display: inline-flex;
   align-items: center;
   font-size: 20px;
-}
-
-/* An unlinked credential: shown, but not clickable. */
-.cert-none {
-  color: var(--card-meta);
+  color: var(--accent);
 }
 
 /* ---------- footer ---------- */
